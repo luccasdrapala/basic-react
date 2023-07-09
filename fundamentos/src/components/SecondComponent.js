@@ -1,4 +1,5 @@
 const SecondComponent = () => {
+    
     return (
         <div>
             <p>Second Component</p>
