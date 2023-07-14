@@ -4,6 +4,14 @@ const Events = () => {
         console.log(e)
     };
 
+    const henderSomething = (x) => {
+        if (x) {
+            return <h1>Primeira reenderizacao</h1>
+        } else {
+            return <h1>Segunda reenderizacao</h1>
+        }
+    }
+
     return (
         <div>
             <div>
@@ -13,7 +21,8 @@ const Events = () => {
             <div>
                 <button onClick={() => console.log("outra funcao")}>Clique aqui</button>
             </div>
-
+            {henderSomething(true)}
+            {henderSomething(true)}
         </div>
     )
 };
