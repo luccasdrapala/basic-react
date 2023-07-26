@@ -1,17 +1,24 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 
-import ImgVariavel from './assets/IMG_3612.JPG'
+// import ImgVariavel from './assets/IMG_3612.JPG'
 import ManageData from './components/ManageData';
 import ListRender from './components/ListRender';
 import ConditionalRender from './components/ConditionalRender';
 import ShowUserName from './components/ShowUserName';
 import CarDetails from './components/CarDetails';
 import Looping from './components/Looping';
+import Fragment from './components/Fragment.js';
+import Container from './components/Container';
+import ExecuteFunction from './components/ExecuteFunction';
 
 function App() {
 
   const lastName = "Drapala"
+
+  function showMessage() {
+    console.log("Evento do componente pai !!!")
+  }
 
   return (
     <div className="App">
@@ -26,6 +33,21 @@ function App() {
       <CarDetails brand="fiat" km={300.000} color="branco" newCar={false}/>
       <hr />
       <Looping/>
+      <hr />
+      <Fragment/>
+      <hr />
+      <Container myValue="Tamo voltani">
+        <p>Este eh o conteudo</p>
+      </Container>
+      <hr />
+      <Container myValue="Tamo voltani 2">
+        <p>Este eh o conteudo 2</p>
+      </Container>
+      <hr />
+
+      {/* Executar funcao p/ prop*/}
+      <ExecuteFunction fatherFunction={showMessage}/>
+      
     </div>
   );
 }

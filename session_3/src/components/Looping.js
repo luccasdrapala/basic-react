@@ -12,6 +12,7 @@ const Looping = () => {
     <div>
         {cars.map((car) => (
             <CarDetails 
+                key={car.id}
                 brand={car.brand} 
                 km={car.km} 
                 color={car.color} 
