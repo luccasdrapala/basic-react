@@ -1,15 +1,11 @@
 import styles from "./Cars.module.css";
 
-const carsModel = [
-    {id: 0, marca:"Ford", cor:"Preto", modelo:"Fiesta"},
-    {id: 1, marca:"GM", cor:"Branco", modelo:"Onix"},
-    {id: 2, marca:"Fiat", cor:"Vermelho", modelo:"Uno"}
-]
-
-const Cars = () => {
+const Cars = ({car}) => {
   return (
-    <div>
-        {cars}
+    <div className={styles.carBox}>
+        <h1>{car.marca}</h1>
+        <p>{car.cor}</p>
+        <p>{car.modelo}</p>
     </div>
   )
 }
