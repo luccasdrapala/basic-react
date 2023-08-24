@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import './MyForm.css'
 
-const MyForm = () => {
+const MyForm = ({user}) => {
 
   // genrenciamento de dados
-  const [name, setName] = useState();
-  const [email, setEmail] = useState();
+  const [name, setName] = useState(user ? user.name : "");
+  const [email, setEmail] = useState(user ? user.email : "");
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -27,6 +27,7 @@ const MyForm = () => {
                   name="name"
                   placeholder='Digit seu nome'
                   onChange={handleName}
+                  value={name}
                 />
             </div>
 
@@ -38,6 +39,7 @@ const MyForm = () => {
                 name="email" id="" 
                 placeholder='Digite o seu email'
                 onChange={(e) => setEmail(e.target.value)}
+                value={email}
               />
             </label>
 
