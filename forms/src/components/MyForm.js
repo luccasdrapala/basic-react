@@ -6,6 +6,8 @@ const MyForm = ({user}) => {
   // genrenciamento de dados
   const [name, setName] = useState(user ? user.name : "");
   const [email, setEmail] = useState(user ? user.email : "");
+  const [bio, setBio] = useState('');
+  const [role, setRole] = useState('');
 
   const handleName = (e) => {
     setName(e.target.value);
@@ -13,7 +15,7 @@ const MyForm = ({user}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(name, email)
+    console.log(name, email, bio, role)
 
     setEmail('');
     setName('');
@@ -45,6 +47,26 @@ const MyForm = ({user}) => {
                 value={email}
               />
             </label>
+
+            <label>
+                <span>Bio</span>
+                <textarea 
+                    name='bio' 
+                    placeholder='Descricao do usuario'
+                    onChange = {(e) => setBio(e.target.value)}
+                    value = {bio}
+                ></textarea>
+            </label>
+
+            <label>
+                <span>ROLE</span>
+                <select name="role" onChange={(e) => setRole(e.target.value)}>
+                    <option value="user">Usuario</option>
+                    <option value="editor">Editor</option>
+                    <option value="admin">Administrador</option>
+                    <option value="fourth">Quarto</option>
+                </select>
+            </label><br />
 
             <button type="submit">submit</button>
         </form>
