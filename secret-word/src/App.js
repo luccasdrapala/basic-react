@@ -40,7 +40,7 @@ function App() {
 
         // create an array of letters
         let wordLetters = word.split("");
-        wordLetters = wordLetters.map((l) => l.lowerCase())
+        wordLetters = wordLetters.map((l) => l.toLowerCase())
 
         // fill states
         setPickedWord(word);
