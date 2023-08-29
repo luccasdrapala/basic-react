@@ -15,6 +15,7 @@
     padding: 1.5em;
     border: 20px solid #ecfa00;
     display: flex;
+    
 }
 
 .letter, .blankSquare {
@@ -27,6 +28,7 @@
     background: white;
     color: black;
     font-weight: bold;
+    margin: 1px;
 }
 
 .letterContainer {
