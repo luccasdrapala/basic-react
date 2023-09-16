@@ -4,7 +4,8 @@ import { useState, useEffect } from "react";
 function App() {
 
 	const [products, setProducts] = useState([]);
-
+	const [name, setName] = useState('');
+	const [price, setPrice] = useState('');
 	const url = 'http://localhost:3000/products';
 
 	//chamada assincrona
@@ -19,7 +20,17 @@ function App() {
 		fetchData()
 	}, []);
 
-	console.log(products);
+	// add products
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		const product = {
+			name,
+			price
+		};
+
+		console.log(product);
+	};
 
 	return (
     	<div className="App">
@@ -29,6 +40,22 @@ function App() {
 					<li key={product.id}>{product.name} - {product.price}</li>
 				))}
 			</ul>
+			
+			<div className='add-product'>
+				<form onSubmit={handleSubmit}>
+					<label>
+						Nome:
+						<input type="text" value={name} onChange={(e) => setName(e.target.value)}/>
+					</label>
+					<br />
+					<label>
+						Preco:
+						<input type="number" value={price} onChange={(e) => setPrice(e.target.value)}/>
+					</label><br />
+					<input className="form-button" type="submit" value="Criar"/>
+				</form>
+			</div>
+			
     	</div>
   	);
 }
