@@ -19,6 +19,21 @@
       "name": "luc",
       "price": "777",
       "id": 4
+    },
+    {
+      "name": "123",
+      "price": "123",
+      "id": 5
+    },
+    {
+      "name": "Teclado",
+      "price": "150",
+      "id": 6
+    },
+    {
+      "name": "Mouse",
+      "price": "150",
+      "id": 7
     }
   ]
 }

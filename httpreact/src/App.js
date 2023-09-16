@@ -37,7 +37,13 @@ function App() {
 			body: JSON.stringify(product),
 		});
 
-		console.log(res);
+		//reload dinamico
+		const addedProduct = await res.json();
+		setProducts((preveousProducts) => [...preveousProducts, addedProduct]);
+
+		//limpar campos
+		setPrice('');
+		setName('');
 	};
 
 	return (
