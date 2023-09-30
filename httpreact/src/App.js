@@ -11,12 +11,11 @@ function App() {
 	const [price, setPrice] = useState('');
 
 	//custom hook
-	const { data: items, httpConfig, loading } = useFetch(url);
+	const { data: items, httpConfig, loading, error } = useFetch(url);
 
 	// add products
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-		debugger;
 
 		const product = {
 			name,
@@ -30,14 +29,19 @@ function App() {
 		setName('');	
 	};
 
+	const handleDelete = (id) => {
+		httpConfig(id, "DELETE");
+	}
+
 	return (
     	<div className="App">
       		<h1>Lista de produtos</h1>
 			{loading && <p>Carregando dados...</p>}
-			{!loading && (
+			{error && <p>Erro na requisicao - Error Message: {error}</p>}
+			{!error && (
 				<ul>
 				{items && items.map((product) => (
-					<li key={product.id}>{product.name} - {product.price}</li>
+					<li key={product.id}>{product.name} - {product.price} - <button onClick={() => handleDelete(product.id)}>Excluir</button></li>
 				))}
 			</ul>
 			)}
