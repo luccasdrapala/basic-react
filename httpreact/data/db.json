@@ -16,29 +16,14 @@
       "price": 29.9
     },
     {
-      "name": "luc",
-      "price": "777",
+      "name": "Teclado mecanico ",
+      "price": "120",
       "id": 4
     },
     {
-      "name": "123",
-      "price": "123",
-      "id": 5
-    },
-    {
-      "name": "Teclado",
-      "price": "150",
-      "id": 6
-    },
-    {
       "name": "Mouse",
-      "price": "150",
-      "id": 7
-    },
-    {
-      "name": "lucas",
-      "price": "4",
-      "id": 8
+      "price": "50",
+      "id": 5
     }
   ]
 }
