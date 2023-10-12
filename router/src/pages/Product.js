@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 
 const Product = () => {
@@ -10,7 +10,6 @@ const Product = () => {
     
   
     const { data: product, loading, error } = useFetch(url);
-    console.log(product);
     return (<>
         <div>Produtos</div>
         
@@ -20,6 +19,7 @@ const Product = () => {
             <div>
                 <h2>{product.name}</h2>
                 <p>{product.price}</p>
+                <Link to={`/products/${product.id}/info`}>Mais informacoes</Link>
             </div>
         }
     </>)
