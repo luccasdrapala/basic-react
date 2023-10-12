@@ -10,7 +10,6 @@ const Home = () => {
   const { data: items, loading, error } = useFetch(url);
 
   return (<div>
-    <div>Produtos</div>
     
     {error && <p>{error}</p>}
 
