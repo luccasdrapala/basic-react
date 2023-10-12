@@ -1,6 +1,6 @@
 import './App.css';
 // react router
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // pages
 import Home from './pages/Home';
@@ -26,6 +26,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home />} />
           <Route path='/about' element={<About />} />
+          <Route path='/company' element={<Navigate to='/about' />} />
           <Route path='/products/:id' element={<Product />} />
           <Route path='/products/:id/info' element={<Info />} />
           <Route path='/search' element={<Search />} />
