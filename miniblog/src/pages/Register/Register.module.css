@@ -3,5 +3,11 @@
 }
 
 .register p {
-    color: #aaa;
+    color: #6d6c6c;
+}
+
+.error {
+    background-color: rgb(255, 230, 230);
+    border-radius: 5px;
+    padding: 10px 20px;
 }
