@@ -29,6 +29,7 @@ export const UserAuthentication = () => {
 		checkIfIsCancelled();
 
 		setLoading(true);
+		setError(null);
 
 		try {
 
@@ -42,13 +43,27 @@ export const UserAuthentication = () => {
 				displayName: data.displayName
 			});
 
+			setLoading(false);
+
 			return user
 		} catch (error) {
+			debugger;
 			console.log(error.message);
 			console.log(typeof error.message);
-		}
 
-		setLoading(false);
+			let systemErrorMessage;
+
+			if (error.message.includes("Password")) {
+				systemErrorMessage = 'A senha precisa de pelo menos 6 caracteres.';
+			} else if (error.message.includes("email-already")) {
+				systemErrorMessage = "Email ja cadastrado.";
+			} else {
+				systemErrorMessage = "Ocorreu um erro, tente mais tarde";
+			}
+			
+			setLoading(false);
+			setError(systemErrorMessage);
+		}
 	}
 
 	useEffect(() => {
