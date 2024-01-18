@@ -30,7 +30,6 @@ function App() {
 		onAuthStateChanged(auth, (user) => {
 			setUser(user);
 		})
-
 	}, [auth])
 
 	const loadingUser = user === undefined;
@@ -64,11 +63,11 @@ function App() {
 							/>
 							<Route 
 								path='/post/create'
-								element={user ? <CreatePost/> : <Navigate to="/"/>}
+								element={user ? <CreatePost/> : <Navigate to="/login"/>}
 							/>
 							<Route 
 								path='/dashboard'
-								element={user ? <Dashboard/> : <Navigate to="/"/>}/>
+								element={user ? <Dashboard/> : <Navigate to="/login"/>}/>
 						</Routes>
 					</div>
 				<Footer/>
