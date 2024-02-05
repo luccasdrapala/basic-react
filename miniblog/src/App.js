@@ -62,7 +62,8 @@ function App() {
 								element={!user ? <Register/> : <Navigate to="/"/>}
 							/>
 							<Route 
-								path='/post/create'
+							// ver rota posts/create errada
+								path='/post/create' 
 								element={user ? <CreatePost/> : <Navigate to="/login"/>}
 							/>
 							<Route 
