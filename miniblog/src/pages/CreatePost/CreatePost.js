@@ -18,7 +18,7 @@ const CreatePost = () => {
 	};
 
 	return (
-		<div>
+		<div className={styles.createPost}>
 			<h2>Create Post</h2>
 			<p>Escreva sobre o que quiser e compartilhe o seu conhecimento</p>
 			<form submit={handleSubmit}>
@@ -29,7 +29,7 @@ const CreatePost = () => {
 						name='title'
 						required
 						placeholder='Pense em um bom titulo'
-						onChance={(e) => setTitle(e.target.value)}
+						onChange={(e) => setTitle(e.target.value)}
 						value={title}
 					/>
 				</label>
@@ -40,7 +40,7 @@ const CreatePost = () => {
 						name='image'
 						required
 						placeholder='Insira uma imagem'
-						onChance={(e) => setTitle(e.target.value)}
+						onChange={(e) => setTitle(e.target.value)}
 						value={image}
 					/>
 				</label>
@@ -60,7 +60,7 @@ const CreatePost = () => {
 						name='tags'
 						required
 						placeholder='Insira as tags separadas por virgula'
-						onChance={(e) => setTags(e.target.value)}
+						onChange={(e) => setTags(e.target.value)}
 						value={tags}
 					/>
 				</label>
