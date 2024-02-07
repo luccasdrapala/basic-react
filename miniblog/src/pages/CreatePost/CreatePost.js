@@ -49,7 +49,7 @@ const CreatePost = () => {
 		<div className={styles.createPost}>
 			<h2>Create Post</h2>
 			<p>Escreva sobre o que quiser e compartilhe o seu conhecimento</p>
-			<form submit={handleSubmit}>
+			<form onSubmit={handleSubmit}>
 				<label>
 					<span>Titulo:</span>
 					<input 
@@ -92,9 +92,15 @@ const CreatePost = () => {
 						value={tags}
 					/>
 				</label>
-				{!response.loading && <button type="submit" className='btn'>Cadastrar</button>}
-				{response.loading && <button type="submit" disabled className='btn'>Aguarde...</button>}
-				{response.error && <p className={styles.error}>{response.error}</p>}
+				{!response.loading && <button className="btn">Criar post!</button>}
+				{response.loading && (
+					<button className="btn" disabled>
+						Aguarde.. .
+					</button>
+				)}
+				{(response.error || formError) && (
+					<p className="error">{response.error || formError}</p>
+				)}
 			</form>
 		</div>
 	);
