@@ -4,17 +4,45 @@ import styles from './CreatePost.module.css';
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuthValue } from "../../context/AuthContext";
+import { useInsertDocument } from '../../hooks/userInsertDocument';
 
 const CreatePost = () => {
 
 	const [title, setTitle] = useState("");
 	const [image, setImage] = useState("");
-	const [bady, setBody] = useState("");
+	const [body, setBody] = useState("");
 	const [tags, setTags] = useState([]);
 	const [formError, setFormError] = useState("");
 
+	const {user} = useAuthValue();
+
+	const {insertDocument, response} = useInsertDocument("posts");
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setFormError("");
+
+		try {
+			// TO-DO
+			// validar imagem
+			// criar array de tags
+			// checar todos os valores
+
+			insertDocument({
+				title,
+				image,
+				body,
+				tags,
+				uid: user.uid,
+				createdBy: user.displayName
+			});
+
+			// redirect homepage
+
+		} catch (error) {
+
+		}
+
 	};
 
 	return (
@@ -40,7 +68,7 @@ const CreatePost = () => {
 						name='image'
 						required
 						placeholder='Insira uma imagem'
-						onChange={(e) => setTitle(e.target.value)}
+						onChange={(e) => setImage(e.target.value)}
 						value={image}
 					/>
 				</label>
@@ -50,7 +78,7 @@ const CreatePost = () => {
 						name="body"
 						required
 						placeholder='Insira o conteudo do post'
-						onChange={(e) => e.target.value}
+						onChange={(e) => setBody(e.target.value)}
 					></textarea>
 				</label>
 				<label>
@@ -64,10 +92,9 @@ const CreatePost = () => {
 						value={tags}
 					/>
 				</label>
-				<button type="submit" className='btn'>Cadastrar</button>
-				{/* {!loading && <button type="submit" className='btn'>Cadastrar</button>}
-				{loading && <button type="submit" disabled className='btn'>Aguarde...</button>}
-				{error && <p className={styles.error}>{error}</p>} */}
+				{!response.loading && <button type="submit" className='btn'>Cadastrar</button>}
+				{response.loading && <button type="submit" disabled className='btn'>Aguarde...</button>}
+				{response.error && <p className={styles.error}>{response.error}</p>}
 			</form>
 		</div>
 	);
