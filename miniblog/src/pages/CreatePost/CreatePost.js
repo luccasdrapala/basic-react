@@ -22,11 +22,19 @@ const CreatePost = () => {
 		e.preventDefault();
 		setFormError("");
 
-		try {
 			// TO-DO
 			// validar imagem
+			try {
+				new URL(image);
+			} catch (error) {
+				setFormError("A imagem precisa ser uma URL.");
+				return;
+			}
+
 			// criar array de tags
 			// checar todos os valores
+			debugger;
+			if (formError) return;
 
 			insertDocument({
 				title,
@@ -38,11 +46,6 @@ const CreatePost = () => {
 			});
 
 			// redirect homepage
-
-		} catch (error) {
-
-		}
-
 	};
 
 	return (
