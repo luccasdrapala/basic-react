@@ -3,11 +3,11 @@ import styles from "./Home.module.css";
 // hooks
 import {useNavigate, Link} from "react-router-dom";
 import {useState} from "react";
-import { useFetchDocuments } from "../../hooks/useFetchDocument";
+import { useFetchDocuments } from "../../hooks/useFetchDocuments";
 
 const Home = () => {
 	const [query, setQuery] = useState("");
-	const [documents, loading] = useFetchDocuments("posts");
+	const {documents, loading} = useFetchDocuments("posts");
 	debugger;
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -28,7 +28,7 @@ const Home = () => {
 				{loading && <p>Carregando...</p>}
 
 				{documents && documents.map((post) => {
-					<h3>{post.title}</h3>
+					return <h3>{post.title}</h3>
 				})}
 
 				{documents && documents.length === 0 && (
