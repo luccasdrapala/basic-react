@@ -5,11 +5,11 @@ import {
 	query,
 	orderBy,
 	onSnapshot,
-	where,
-	QuerySnapshot
+	where
 } from 'firebase/firestore';
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) => {
+	debugger;
 	const [documents, setDocuments] = useState(null);
 	const [error, setError] = useState(null);
 	const [loading, setLoading] = useState(null);
@@ -19,6 +19,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
 	useEffect(() => {
 		async function loadData() {
+			debugger;
 			if (cancelled) return;
 
 			setLoading(true);
@@ -33,9 +34,9 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 
 				q = await query(collectionRef, orderBy("createdAt", "desc"));
 
-				await onSnapshot(q, (QuerySnapshot) => {
+				await onSnapshot(q, (querySnapshot) => {
 					setDocuments(
-						QuerySnapshot.docs.map((doc) => ({
+						querySnapshot.docs.map((doc) => ({
 							id: doc.id,
 							...doc.data(),
 						}))
@@ -46,9 +47,9 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) => {
 			} catch (error) {
 				console.log(error);
 				setError(error.message);
-
-				setLoading(false);
 			}
+
+			setLoading(false);
 		};
 
 		loadData();
