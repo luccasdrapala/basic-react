@@ -4,11 +4,11 @@ import styles from "./Home.module.css";
 import {useNavigate, Link} from "react-router-dom";
 import {useState} from "react";
 import { useFetchDocuments } from "../../hooks/useFetchDocuments";
+import PostDetail from "../../components/PostDetail";
 
 const Home = () => {
 	const [query, setQuery] = useState("");
 	const {documents, loading} = useFetchDocuments("posts");
-	debugger;
 	const handleSubmit = (e) => {
 		e.preventDefault();
 	}
@@ -27,9 +27,9 @@ const Home = () => {
 			<div>
 				{loading && <p>Carregando...</p>}
 
-				{documents && documents.map((post) => {
-					return <h3>{post.title}</h3>
-				})}
+				{documents && documents.map((post) => (
+					<PostDetail key={post.id} post={post}/>
+				))}
 
 				{documents && documents.length === 0 && (
 					<div className={styles.noPosts}>
