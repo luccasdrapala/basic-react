@@ -23,7 +23,7 @@ export const useFetchDocument = (docCollection, id) => {
 				setDocument(docSnap.data());
 				setLoading(false);
 			} catch (error) {
-				console.log("DEU ruim: " + error.message);
+				setError(error.message)
 				setLoading(false);
 			}
 		
